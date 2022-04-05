@@ -1,4 +1,4 @@
-package com.company.hackerrank;
+package com.company.hackerrank.warmup;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;

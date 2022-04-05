@@ -1,4 +1,4 @@
-package com.company.hackerrank;
+package com.company.hackerrank.warmup;
 
 import java.util.ArrayList;
 import java.util.List;

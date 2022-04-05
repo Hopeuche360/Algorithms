@@ -1,4 +1,4 @@
-package com.company.hackerrank;
+package com.company.hackerrank.warmup;
 
 public class Staircase {
     public static void main(String[] args) {
