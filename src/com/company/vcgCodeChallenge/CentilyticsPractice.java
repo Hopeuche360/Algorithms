@@ -4,32 +4,33 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CentilyticsPractice {
-    public static void main(String[] args) {
-//        int[] array = {2, 5, 3, 6, 4, 8, 3, 7, 2, 6};
-//        int[] myArray = {10,30, 30, 20, 10, 20, 50, 10, 25, 3};
-//        String word = "hello";
-//        removeConcurrent(word);
-//        removeConcurrentCharacter(word);
-//        System.out.println(linerSearchArray(array, 2));
-//        System.out.println(findReOccurringNumbersInArray(myArray));
-//        System.out.println(removeRecurrentCharacters(word));
-//        System.out.println(removeDuplicates("aabbaaccdddzzzfffbbb"));
+//    public static void main(String[] args) {
+////        int[] array = {2, 5, 3, 6, 4, 8, 3, 7, 2, 6};
+////        int[] myArray = {10,30, 30, 20, 10, 20, 50, 10, 25, 3};
+////        String word = "hello";
+////        removeConcurrent(word);
+////        removeConcurrentCharacter(word);
+////        System.out.println(linerSearchArray(array, 2));
+////        System.out.println(findReOccurringNumbersInArray(myArray));
+////        System.out.println(removeRecurrentCharacters(word));
+////        System.out.println(removeDuplicates("aabbaaccdddzzzfffbbb"));
+////        int[] array = {10, 56, 0, 8, 0, 2};
+////        System.out.println(Arrays.toString(rearrangeArray(array)));
+////        try {
+////            int a = 0;
+////            int b = 5;
+////            int c = b/a;
+////            System.out.println("Hello");
+////        } catch (NumberFormatException e) {
+////            System.out.println("Musa");
+////        } finally {
+////            System.out.println("World");
+////        }
+//        int[] arr = {1, 2, 3, 4};
+//        System.out.println(Arrays.toString(findProduct(arr)));
 //        int[] array = {10, 56, 0, 8, 0, 2};
 //        System.out.println(Arrays.toString(rearrangeArray(array)));
-//        try {
-//            int a = 0;
-//            int b = 5;
-//            int c = b/a;
-//            System.out.println("Hello");
-//        } catch (NumberFormatException e) {
-//            System.out.println("Musa");
-//        } finally {
-//            System.out.println("World");
-//        }
-        int[] arr = {2, 3, 2, 1, 4};
-        System.out.println(Arrays.toString(multiplyArray(arr)));
-
-    }
+//    }
 
     public static List<Integer> linerSearchArray(int[] array, int number) {
         List<Integer> list = new ArrayList<>();
@@ -75,11 +76,11 @@ public class CentilyticsPractice {
 
     public static Object[] rearrangeArray(int[] array) { //10, 56, 0, 8, 0, 2
         List<Integer> list = new LinkedList<>();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == 0){
-                list.add(0, array[i]);
+        for (int j : array) {
+            if (j == 0) {
+                list.add(0, j);
             } else {
-                list.add(array[i]);
+                list.add(j);
             }
         }
         return list.toArray();
@@ -105,5 +106,49 @@ public class CentilyticsPractice {
             multipliedArray[i] = multiple;
         }
         return multipliedArray;
+    }
+
+    public static int[] findProduct(int[] array) {
+        int[] productArray = new int[array.length];
+        for(int i = 0; i < array.length; i++) {
+            int product = 1;
+            for(int j = 0; j < array.length; j++) {
+                if (i != j) product *= array[j];
+            }
+            productArray[i] = product;
+        }
+        return productArray;
+    }
+
+    public static int fib(int n) {
+        if (n < 2) return n;
+        int n1 = 0;
+        int n2 = 1;
+        int sum;
+         while(n-- > 1) {
+             sum = n1 + n2;
+             n1 = n2;
+             n2 = sum;
+         }
+         return n2;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(concurrent("hello"));
+    }
+    public static String concurrent(String str){
+        StringBuilder removed = new StringBuilder();
+        String [] mystr = str.split("");
+        for(int i = 0; i< mystr.length; i++){
+            if(i == mystr.length - 1){
+                removed.append(mystr[i]);
+            }else{
+                if(!mystr[i].equals(mystr[i + 1])){
+                    removed.append(mystr[i]);
+                }
+            }
+        }
+        return removed.toString();
     }
 }

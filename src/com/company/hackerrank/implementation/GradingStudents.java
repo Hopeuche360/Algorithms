@@ -6,34 +6,25 @@ import java.util.List;
 
 public class GradingStudents {
     public static void main(String[] args) {
-        System.out.println(gradingStudents(new ArrayList<>(Arrays.asList(73, 67, 38, 33))));
+        System.out.println(solve(new ArrayList<>(Arrays.asList(44, 84, 94, 21, 0, 18, 100, 18, 62, 30, 61, 53))));
+//        System.out.println(gradingStudents(new ArrayList<>(Arrays.asList(73, 67, 38, 33))));
     }
 
-    private static int[] solve(int[] grades) {
-        // Complete this function
-        for (int i = 0; i < grades.length; i++) {
-            if (grades[i] >= 38) {
-                if (grades[i] % 5 > 2) grades[i] += 5 - (grades[i] % 5);
+    // 0(n) space complexity and 0(n) time complexity
+    private static List<Integer> solve(List<Integer> grades) {
+        List<Integer> result = new ArrayList<>();
+        for (Integer grade : grades) {
+            int check1 = grade + 1;
+            int check2 = grade + 2;
+            if (grade < 38 || (check1 % 5 != 0 && check2 % 5 != 0)) {
+                result.add(grade);
+            } else if (check1 % 5 == 0){
+                result.add(check1);
+            } else {
+                result.add(check2);
             }
         }
-        return grades;
+        return result;
     }
 
-    public static List<Integer> gradingStudents(List<Integer> grades) {
-        // Write your code here
-        List<Integer> upgrade = new ArrayList<>();
-        List<Integer> multiples_5 = new ArrayList<>(Arrays.asList(40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100));
-        for (int i = 0; i < grades.size(); i++) {
-            if (grades.get(i) < 38)
-                upgrade.add(grades.get(i));
-            for (int j = 0; j < multiples_5.size(); j++) {
-                if (multiples_5.get(j) == grades.get(i) + 3
-                    || multiples_5.get(j) == grades.get(i) + 2
-                    || multiples_5.get(j) == grades.get(i) + 1)
-                upgrade.add(multiples_5.get(j));
-                else upgrade.add(grades.get(i));
-            }
-        }
-        return upgrade;
-    }
 }

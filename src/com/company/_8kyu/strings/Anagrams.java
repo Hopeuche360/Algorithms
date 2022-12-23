@@ -18,4 +18,8 @@ public class Anagrams {
 
         return count == str1.length();
     }
+
+    public static String ternary(int age) {
+        return age < 18 ? "Not Permitted" : "Permitted";
+    }
 }

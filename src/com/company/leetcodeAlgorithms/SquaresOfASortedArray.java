@@ -11,9 +11,11 @@ import java.util.Map;
 public class SquaresOfASortedArray {
     public static void main(String[] args) {
         int[] nums = {-4,-1,0,3,10};
-        System.out.println(Arrays.toString(sortedSquares(nums)));
+//        System.out.println(Arrays.toString(sortedSquares(nums)));
+        System.out.println(Arrays.toString(getSortedSquares(nums)));
     }
 
+//    0(n) time and 0(n) space
     public static int[] sortedSquares(int[] nums) {
        int[] value = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
@@ -21,5 +23,14 @@ public class SquaresOfASortedArray {
         }
         Arrays.sort(value);
         return value;
+    }
+
+//    0(n) time and 0(1) space
+    public static int[] getSortedSquares(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (int) Math.pow(nums[i], 2);
+        }
+        Arrays.sort(nums);
+        return nums;
     }
 }

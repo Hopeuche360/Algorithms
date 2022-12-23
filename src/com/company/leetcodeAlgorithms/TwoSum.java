@@ -8,31 +8,29 @@ public class TwoSum {
     public static void main(String[] args) {
         int [] nums = {3, 5, -4, 8, 11, 1, -1, 6};
         int target = 8;
-
-        System.out.println(Arrays.toString(twoSum(nums, target)));
+        System.out.println(Arrays.toString(twoSumII(nums, target)));
     }
 
-    // with O(n) time complexity
+    // using brute force method
     public static int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> value = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (value.containsKey(target - nums[i])) {
-                return new int[] {value.get(target - nums[i]), i};
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target)
+                    return new int[] {i, j};
             }
-            value.put(nums[i], i);
         }
-        return null;
+        return new int[] {-1, -1};
     }
 
-    //with O(n^2) time complexity
-    public static int[] twoNumberSum(int[] array, int targetSum) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if ((array[i] + array[j]) == targetSum) {
-                    return new int[] {array[i], array[j]};
-                }
+    // using HashMap
+    public static int[] twoSumII(int[] nums, int target) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (hashMap.containsKey(target - nums[i])) {
+                return new int[] {hashMap.get(target - nums[i]), i};
             }
+            hashMap.put(nums[i], i);
         }
-        return new int[0];
+        return new int[] {-1, -1};
     }
 }

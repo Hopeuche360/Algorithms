@@ -11,7 +11,7 @@ public class StringReverse {
         String[] str = word.split("");
         String temp = "";
         for (int i = str.length-1; i >= 0 ; i--) {
-            temp += str[i];
+            temp = temp.concat(str[i]);
         }
         return temp;
     }
